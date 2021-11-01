@@ -1,0 +1,26 @@
+{
+  "name": "purescript-typescript-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigma-andex/purescript-typescript-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sigma-andex/purescript-typescript-utils/issues"
+  },
+  "homepage": "https://github.com/sigma-andex/purescript-typescript-utils#readme",
+  "devDependencies": {
+    "@rowtype-yoga/prettier-plugin-purescript": "^1.11.2",
+    "prettier": "^2.4.1",
+    "purescript": "^0.14.5",
+    "spago": "^0.20.3"
+  }
+}
