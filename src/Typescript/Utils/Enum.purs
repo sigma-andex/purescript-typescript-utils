@@ -20,15 +20,15 @@ class MatchHelper enumCtr enumValue enum output fun | enumCtr enumValue enum out
   matchHelper :: Proxy enumCtr -> Proxy enumValue -> Proxy enum -> output -> (enum -> (enum -> output) -> output) -> fun
 
 instance MatchHelper enumCtr Unit enum output (enum -> output) where
-  matchHelper _ _ _ output cont = flip cont (const output)
+  matchHelper _ _ _ output continuation = flip continuation (const output)
 else instance (IsMatch enum enumCtr enumValue, Enum enumCtr enumValue nextEnumValue, MatchHelper enumCtr nextEnumValue enum output nextResult) => MatchHelper enumCtr enumValue enum output (((enumCtr enumValue -> output) -> nextResult)) where
-  matchHelper _ _ _ output cont =
+  matchHelper _ _ _ output continuation =
     let
       handler :: (enumCtr enumValue -> output) -> nextResult
       handler applyMatch =
         let
           nextCont enum otherwise =
-            cont enum
+            continuation enum
               $ \i ->
                   let
                     matchEnumValue :: enumCtr enumValue
