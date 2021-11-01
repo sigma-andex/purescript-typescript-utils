@@ -52,4 +52,4 @@ class Match enum output result | enum output -> result where
 
 instance (EnumConfig enum enumCtr enumValue, MatchHelper enumCtr enumValue enum output fun) => Match enum output fun where
   match :: Proxy enum -> output -> fun
-  match inputProxy output = matchHelper (Proxy :: Proxy enumCtr) (Proxy :: Proxy enumValue) inputProxy output applyFlipped
+  match enumProxy output = matchHelper (Proxy :: Proxy enumCtr) (Proxy :: Proxy enumValue) enumProxy output applyFlipped
