@@ -1,12 +1,19 @@
 module Typescript.Utils.Enum where
 
 import Prelude
+
 import Data.Function (applyFlipped)
+import Data.Function.Uncurried (Fn2, runFn2)
 import Type.Proxy (Proxy(..))
 
 class IsMatch :: forall (e :: Type). Type -> (e -> Type) -> e -> Constraint
 class IsMatch enum enumCtr enumVal | enum -> enumCtr enumVal, enumCtr enumVal -> enum where
   isMatch :: enum -> enumCtr enumVal -> Boolean
+
+foreign import isMatchImpl :: forall e ctr v. Fn2 e (ctr v) Boolean
+
+instance IsMatch e ctr v where
+  isMatch = runFn2 isMatchImpl
 
 class Enum :: forall k1 k2. (k1 -> Type) -> k1 -> k2 -> Constraint
 class Enum enumCtr enumCur enumNext | enumCtr enumCur -> enumNext where
