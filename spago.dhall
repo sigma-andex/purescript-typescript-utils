@@ -2,8 +2,11 @@
 , dependencies =
   [ "console"
   , "effect"
+  , "functions"
   , "prelude"
   , "psci-support"
+  , "typelevel-lists"
+  , "unsafe-coerce"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
