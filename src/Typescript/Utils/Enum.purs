@@ -131,3 +131,13 @@ on t f otherwise tlist =
     f t
   else
     otherwise (unsafeCoerce tlist)
+
+default' :: forall output enum. output -> enum -> output
+default' = const
+
+on' :: forall enumCtr enumValue enum output. enumCtr enumValue -> (enumCtr enumValue -> output) -> (enum -> output) -> enum -> output
+on' t f otherwise enum =
+  if isMatch enum t then
+    f t
+  else
+    otherwise (unsafeCoerce enum)
