@@ -4,3 +4,5 @@ const isMatchImpl = function (x, y) {
     return x === y
 }
 exports.isMatchImpl = isMatchImpl
+
+exports.isTListMatchImpl = isMatchImpl
