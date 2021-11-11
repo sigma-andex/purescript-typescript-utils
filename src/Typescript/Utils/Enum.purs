@@ -25,9 +25,10 @@ class Enum :: forall k1 k2. (k1 -> Type) -> k1 -> k2 -> Constraint
 class Enum enumCtr enumCur enumNext | enumCtr enumCur -> enumNext where
   enumValue :: enumCtr enumCur
 
-class EnumRep :: forall k. (k -> Type) -> k -> Constraint
-class EnumRep enumCtr enumCur where
-  enumRep :: enumCtr enumCur
+class EnumRep :: forall k. (k -> Type) -> k -> Type -> Constraint
+class EnumRep enumCtr enumValue runtimeRep | enumCtr enumValue -> runtimeRep where
+  runtimeRep :: enumCtr enumValue -> runtimeRep
+  enumRep :: enumCtr enumValue
 
 -- | Typeclass for constructing an enumeration
 class EnumConfig :: forall k1 k2 k3. k1 -> k2 -> k3 -> Constraint
